@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   so_long_mapchecker.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/26 18:09:38 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/21 23:40:15 by lchan            ###   ########.fr       */
+/*   Created: 2022/05/25 17:35:51 by lchan             #+#    #+#             */
+/*   Updated: 2022/05/25 18:06:14 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long int	ft_atol(const char *str)
-{
-	int			sign;
-	long int	result;
+#include "so_long.h"
 
-	sign = 1;
-	result = 0;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if ((*str == '+' || *str == '-') && str++)
-		if (*(str - 1) == '-')
-			sign = -sign;
-	while (*str >= '0' && *str <= '9')
+sl_check_mapline(gnl);
+
+int	sl_mapchecker(char *mapfile)
+{
+	int map_fd;
+	char *gnl;
+
+	map_fd = open(mapfile, O_RDONLY);
+	if (map_fd == -1)
+		return (0);
+	while (1)
 	{
-		result = result * 10 + *str - '0';
-		str++;
+		gnl = get_next_line(map_fd);
+		
+		if (gnl);
+			free (gnl);
 	}
-	return (result * (long int)sign);
 }

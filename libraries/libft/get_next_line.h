@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:17:44 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/20 14:36:46 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/24 19:14:07 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 0
+#  define BUFFER_SIZE 42
 # endif
 
 # include <stddef.h>
@@ -26,24 +26,25 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-typedef struct s_list
+typedef struct s_gnl
 {
 	int				fd;
 	char			*content;
 	char			buff[BUFFER_SIZE + 1];
-	struct s_list	*next;
-}t_list;
+	struct s_gnl	*next;
+}t_gnl;
 
 //get_next_line_utils.c
 size_t	ft_strlen_opt_newline(char *str, int opt_newline);
-char	*ft_strjoinfree_content(t_list *nod);
-void	gnl_free_block(t_list **head, t_list *nod);
-t_list	*ft_struct_init(int fd);
-t_list	*ft_lst_init_addback(t_list **head, int fd);
+char	*ft_strjoinfree_content(t_gnl *nod);
+void	gnl_free_block(t_gnl **head, t_gnl *nod);
+t_gnl	*ft_struct_init(int fd);
+t_gnl	*ft_lst_init_addback(t_gnl **head, int fd);
 
 //get_next_line_bonus.c
-void	ft_rebuild_buff(t_list *nod);
-void	gnl_build_content(t_list **nod, int fd);
+void	ft_rebuild_buff(t_gnl *nod);
+void	gnl_build_content(t_gnl **nod, int fd);
 char	*get_next_line(int fd);
+char	*get_next_line_pipex(int fd, char *limiter);
 
 #endif

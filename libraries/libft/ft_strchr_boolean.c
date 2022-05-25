@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftstrlen.c                                         :+:      :+:    :+:   */
+/*   ft_strchr_boolean.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/22 19:22:14 by lchan             #+#    #+#             */
-/*   Updated: 2021/12/07 16:13:38 by lchan            ###   ########.fr       */
+/*   Created: 2022/05/25 17:58:49 by lchan             #+#    #+#             */
+/*   Updated: 2022/05/25 17:59:12 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-size_t	ft_strlen(const char *s)
+int	ft_strchr_booleen(const char *s, int c)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (s[i])
+	{
+		if (s[i] == (unsigned char) c)
+			return (1);
 		i++;
-	return (i);
+	}
+	return (0);
 }

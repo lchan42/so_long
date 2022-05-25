@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lchan <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: lchan <lchan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 20:57:58 by lchan             #+#    #+#              #
-#    Updated: 2022/04/11 16:31:48 by lchan            ###   ########.fr        #
+#    Updated: 2022/05/25 17:59:40 by lchan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,13 +40,13 @@ SRCS	=	ft_atoi.c\
 			ft_strmapi.c\
 			ft_strncmp.c\
 			ft_strnstr.c\
+			ft_strchr_boolean.c\
 			ft_strrchr.c\
 			ft_strtrim.c\
 			ft_substr.c\
 			ft_tolower.c\
 			ft_toupper.c\
-
-SRCSBONUS =	ft_lstnew.c\
+			ft_lstnew.c\
 			ft_lstadd_front.c\
 			ft_lstsize.c\
 			ft_lstlast.c\
@@ -55,6 +55,8 @@ SRCSBONUS =	ft_lstnew.c\
 			ft_lstclear.c\
 			ft_lstiter.c\
 			ft_lstmap.c\
+			get_next_line.c\
+			get_next_line_utils.c
 
 NAME		= libft.a
 
@@ -62,12 +64,10 @@ INC			= libft.h
 
 OBJS		= ${SRCS:.c=.o}
 
-OBJSBONUS	= ${SRCSBONUS:.c=.o}
-
 CC			= gcc
 RM			= rm -f
 
-CFLAGS		= -Wall -Werror -Wextra 
+CFLAGS		= -g3 -Wall -Werror -Wextra
 
 AR			= ar
 
@@ -78,18 +78,15 @@ RAN			= ranlib
 %.o: %.c
 			${CC} ${CFLAGS} -c $< -o $@
 
-all:		${NAME} 
+all:		${NAME}
 
 $(OBJS):	${INC}
 
-$(NAME):	${OBJS} ${OBJSBONUS}
-			${AR} ${ARFLAGS} ${NAME} ${OBJS} ${OBJSBONUS}
-
-bonus:		${NAME} ${OBJS} ${OBJSBONUS}
-			${AR} ${ARFLAGS} ${NAME} ${OBJSBONUS}
+$(NAME):	${OBJS}
+			${AR} ${ARFLAGS} ${NAME} ${OBJS}
 
 clean:
-			${RM} ${OBJS} ${OBJSBONUS}
+			${RM} ${OBJS}
 
 fclean:		clean
 			${RM} ${NAME}

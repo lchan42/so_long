@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 15:15:01 by lchan             #+#    #+#             */
-/*   Updated: 2022/02/04 15:15:06 by lchan            ###   ########.fr       */
+/*   Created: 2022/02/04 15:15:57 by lchan             #+#    #+#             */
+/*   Updated: 2022/05/20 17:41:40 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ size_t	ft_strlen_opt_newline(char *str, int opt_newline)
 - opt_newline = 0 : normal strlen; 
 ***************************************************************/
 
-char	*ft_strjoinfree_content(t_list *nod)
+char	*ft_strjoinfree_content(t_gnl *nod)
 {
 	int		len_content;
 	int		len_buff;
@@ -73,13 +73,35 @@ char	*ft_strjoinfree_content(t_list *nod)
 	return (new_content - (len_content + len_buff));
 }
 
-t_list	*ft_struct_init(int fd)
+void	gnl_free_block(t_gnl **head, t_gnl *nod)
+{
+	t_gnl	*tmp_link;
+
+	tmp_link = *head;
+	if (tmp_link == nod)
+		*head = (*head)->next;
+	else
+	{
+		while (tmp_link->next != nod)
+			tmp_link = tmp_link->next;
+		tmp_link->next = nod->next;
+	}
+	if (nod->content)
+		free(nod->content);
+	free(nod);
+	nod = NULL;
+}
+/**************************************************************
+* this is the only fonction added in the bonus file.
+**************************************************************/
+
+t_gnl	*ft_struct_init(int fd)
 {	
-	t_list	*tmp;
+	t_gnl	*tmp;
 	int		i;
 
 	i = -1;
-	tmp = malloc(sizeof(t_list));
+	tmp = malloc(sizeof(t_gnl));
 	if (!tmp)
 		return (NULL);
 	tmp->fd = fd;
@@ -90,27 +112,28 @@ t_list	*ft_struct_init(int fd)
 	return (tmp);
 }
 
-t_list	*ft_lst_init_addback(t_list **head, int fd)
+t_gnl	*ft_lst_init_addback(t_gnl **head, int fd)
 {
-	t_list	*tmp;
-	t_list	*tmp2;
-	int		i;
+	t_gnl	*tmp;
+	t_gnl	*tmp2;
 
-	i = -1;
 	tmp = (*head);
 	tmp2 = (*head);
-	if (tmp)
-		while (tmp->fd != fd)
-			tmp = tmp->next;
-	else
-		tmp = ft_struct_init(fd);
-	if (!*head)
-		*head = tmp;
-	else if (tmp2->next)
+	while (tmp && tmp->fd != fd)
+		tmp = tmp->next;
+	if (tmp && tmp->fd == fd)
+		return (tmp);
+	else if (!tmp)
 	{
-		while (tmp2->next)
-			tmp2 = tmp2->next;
-		tmp2->next = tmp;
+		tmp = ft_struct_init(fd);
+		if (!*head)
+			*head = tmp;
+		else
+		{
+			while (tmp2->next)
+				tmp2 = tmp2->next;
+			tmp2->next = tmp;
+		}
 	}
 	return (tmp);
 }

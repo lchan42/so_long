@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:38:45 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/24 21:48:25 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/25 17:33:41 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(void)
 	void	*mlx_ptr;
 	void	*mlx_win;
 
+	
 	sl_mlx_init(&mlx_ptr, &mlx_win);
 	mlx_pixel_put(mlx_ptr, mlx_win, WIN_W/2, WIN_H/2, 0xFF0000);
 	sleep(3);
