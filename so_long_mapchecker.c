@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 17:35:51 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/27 17:09:15 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/27 17:40:13 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	__linecheck_edges(char	*str)
 	int	i;
 
 	i = -1;
-	while (str[++i])
+	while (str[++i] != '\n')
 		if (str[i] != '1')
 			return (-1);
 	return (i);
@@ -40,7 +40,7 @@ int	__linecheck_inter(char *str, int *vital_flag)
 
 	i = -1;
 	len = ft_strlen(str);
-	while (str[++i])
+	while (str[++i] != '\n')
 	{
 		__vital_flag(str[i], vital_flag);
 		if (i == 0 && str[i] != '1')
@@ -53,7 +53,7 @@ int	__linecheck_inter(char *str, int *vital_flag)
 	return (i);
 }
 
-void	__mapchecker(t_list *lst)
+int	__mapchecker(t_list *lst)
 {
 	int	y;
 	int x;
@@ -61,6 +61,7 @@ void	__mapchecker(t_list *lst)
 
 	y = 1;
 	x = __linecheck_edges((char *) lst->content);
+	vital_flag = 0;
 	if (x < 3)
 		return (-1);
 	lst = lst->next;
@@ -68,7 +69,7 @@ void	__mapchecker(t_list *lst)
 	{
 		if (!lst->next && x != __linecheck_edges((char *) lst->content))
 			return (-1);
-		else if (lst->next && x != __linecheck_inter((char *)lst->content, &vital_flag) == -1)
+		else if (lst->next && x != __linecheck_inter((char *)lst->content, &vital_flag))
 			return (-1);
 		lst = lst->next;
 	}
@@ -79,12 +80,16 @@ void	__mapchecker(t_list *lst)
 /********************************************
  * return: the number of nod in the list for futur malloc;
  * error: return -1
- * declared value : x = len of line 1 / y = nod cnt / vital_flag = minimum 
- * in order:
- * 		check if fist_line is full of 1;
- * 		check if inter_line have 1 on edges
- * 		add value to vital_flag via | (bitwise or);
- * 		check if vital_flag has all required bit on;
+ * declared value :
+ * 		x = len of first line
+ * 		y = nod cnt
+ * 		vital_flag = check if there is at least C E P on the map;
+ * description: check if
+ * 		all line has same len than first line
+ * 		fist_line/last_line is full of 1;
+ * 		inter_line
+ * 			have 1 on edges
+ * 			have at least C E P --> vital_flag | (bitwise or);
  * 		return (nbr nod);
  * ******************************************/
 
@@ -93,6 +98,7 @@ void	sl_read_save_map(char *file)
 	int		map_fd;
 	char	*gnl;
 	t_list	*map_head;
+	int		y;
 
 	map_head = NULL;
 	map_fd = open(file, O_RDONLY);
@@ -106,9 +112,11 @@ void	sl_read_save_map(char *file)
 		else
 			ft_lstadd_back(&map_head, ft_lstnew(gnl));
 	}
-	sl_mapchecker(map_head);
+	close(map_fd);
 	vis_printmap_lst(map_head);
+	y = __mapchecker(map_head);
+	if (y < 3)
+		printf("error map, y = %d\n", y);
 	if (map_head)
 		sl_free_lst(map_head);
-	close(file);
 }
