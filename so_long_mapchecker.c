@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 17:35:51 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/27 20:05:03 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/27 20:12:52 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	__linecheck_inter(char *str, int *vital_flag)
 int	__mapchecker(t_list *lst)
 {
 	int	y;
-	int x;
+	int	x;
 	int	vital_flag;
 
 	if (!lst)
@@ -69,9 +69,11 @@ int	__mapchecker(t_list *lst)
 	lst = lst->next;
 	while (lst && y++)
 	{
-		if (!lst->next && x != __linecheck_edges((char *) lst->content))
+		if (!lst->next
+			&& x != __linecheck_edges((char *) lst->content))
 			return (-1);
-		else if (lst->next && x != __linecheck_inter((char *)lst->content, &vital_flag))
+		else if (lst->next
+			&& x != __linecheck_inter((char *)lst->content, &vital_flag))
 			return (-1);
 		lst = lst->next;
 	}
