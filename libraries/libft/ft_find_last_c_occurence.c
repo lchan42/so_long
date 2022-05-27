@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_lst_utils.c                                :+:      :+:    :+:   */
+/*   ft_find_last_c_occurence.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 13:01:41 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/27 18:09:46 by lchan            ###   ########.fr       */
+/*   Created: 2022/05/27 18:51:12 by lchan             #+#    #+#             */
+/*   Updated: 2022/05/27 19:28:11 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-void	__sl_free_lst(t_list **lst)
-{
-	t_list *tmp;
-
-	while (*lst)
-	{
-		tmp = *lst;
-		*lst = (*lst)->next;
-		free(tmp->content);
-		free(tmp);
-	}
-	*lst = NULL;
-}
-
-int	sl_lst_nodcnt(t_list *lst)
+int	ft_find_last_c_occurence(char *path, char c)
 {
 	int	i;
+	int	slash;
 
-	i = 0;
-	while (lst && ++i)
-		lst = lst->next;
-	return (i);
+	i = -1;
+	slash = i + 1;
+	while (path[++i])
+		if (path[i] == c)
+			slash = i + 1;
+	return (slash);
 }
+
+/*****************************************
+* return position of the last c encounted
+******************************************/

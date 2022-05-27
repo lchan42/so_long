@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:34:21 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/26 13:20:55 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/27 18:22:19 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,13 @@ enum map_char{
 };
 
 //so_long_mapchecker.c
-void	sl_read_save_map(char *mapfile);
+int	__mapchecker(t_list *lst);
+
+//so_long_mapparser.c
+void	__mapparser(char *file);
 
 //so_long_lst_utils.c
-void	sl_free_lst(t_list *lst);
+void	__sl_free_lst(t_list **lst);
 int		sl_lst_nodcnt(t_list *lst);
 
 // sl_visual.c

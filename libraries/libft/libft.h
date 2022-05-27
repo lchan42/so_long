@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 17:12:17 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/27 15:52:40 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/27 19:32:38 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void		*ft_memmove(void *dst, const void *src, size_t len);
 void		*ft_memset(void *b, int c, size_t len);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char		*ft_strrchr(const char *s, int c);
-int			ft_strchr_boolean(const char *s, int c);
 
 // <stdlib.h>
 int			ft_atoi(const char *str);
@@ -80,4 +79,9 @@ void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+//own
+int			ft_find_last_c_occurence(char *path, char c);
+int			ft_strchr_boolean(const char *s, int c);
+void		ft_puterror_exit(char *str);
 #endif
