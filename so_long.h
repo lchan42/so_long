@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:34:21 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/25 18:18:00 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/26 13:20:55 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@
 # define SO_LONG_ERROR "./so_long"
 # define MAP_CHAR "01CEP"
 
-type_def struct s_map{
+typedef struct s_map{
 	int	line_nbr; // at least > 3
-	int	line_lengh; // at least > 3 && egal 
+	int	line_lengh; // at least > 3 && egal
 
 	int	required_char;
 
@@ -44,6 +44,7 @@ typedef struct s_data{
 }t_data;
 
 enum error{
+	UNVALID_MAP,
 	MLX_ERROR,
 };
 
@@ -52,4 +53,15 @@ enum map_char{
 	E = 2,
 	P = 4
 };
+
+//so_long_mapchecker.c
+void	sl_read_save_map(char *mapfile);
+
+//so_long_lst_utils.c
+void	sl_free_lst(t_list *lst);
+int		sl_lst_nodcnt(t_list *lst);
+
+// sl_visual.c
+void	vis_printmap_lst(t_list *lst);
+
 #endif

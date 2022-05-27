@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr_boolean.c                                :+:      :+:    :+:   */
+/*   so_long_visual.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/25 17:58:49 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/27 15:52:35 by lchan            ###   ########.fr       */
+/*   Created: 2022/05/26 11:53:37 by lchan             #+#    #+#             */
+/*   Updated: 2022/05/26 13:03:47 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strchr_boolean(const char *s, int c)
+#include "so_long.h"
+void	vis_printmap_lst(t_list *lst)
 {
-	int	i;
+	int i;
 
-	i = 0;
-	while (s[i])
+	i = -1;
+	printf("number of line = %d\n", sl_lst_nodcnt(lst));
+	while (lst)
 	{
-		if (s[i] == (unsigned char) c)
-			return (1);
-		i++;
+		printf("%3d : %s", ++i, (char *)lst->content);
+		lst = lst->next;
 	}
-	return (0);
 }

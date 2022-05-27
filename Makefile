@@ -6,7 +6,7 @@
 #    By: lchan <lchan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 20:57:58 by lchan             #+#    #+#              #
-#    Updated: 2022/05/24 21:05:15 by lchan            ###   ########.fr        #
+#    Updated: 2022/05/26 13:04:37 by lchan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,9 @@ LIBPATH = ./libraries/libft
 LIB	= ./libraries/libft/libft.a
 
 SRCS	=	main.c\
+			so_long_visual.c\
+			so_long_mapchecker.c\
+			so_long_lst_utils.c
 
 NAME		= so_long
 HEADER		= so_long.h

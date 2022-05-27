@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 17:12:17 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/20 17:38:55 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/27 15:52:40 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void		*ft_memmove(void *dst, const void *src, size_t len);
 void		*ft_memset(void *b, int c, size_t len);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char		*ft_strrchr(const char *s, int c);
+int			ft_strchr_boolean(const char *s, int c);
 
 // <stdlib.h>
 int			ft_atoi(const char *str);
