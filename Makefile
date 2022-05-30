@@ -6,7 +6,7 @@
 #    By: lchan <lchan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 20:57:58 by lchan             #+#    #+#              #
-#    Updated: 2022/05/30 18:00:51 by lchan            ###   ########.fr        #
+#    Updated: 2022/05/30 20:11:55 by lchan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRCS	=	main.c\
 			so_long_visual.c\
 			so_long_mapchecker.c\
 			so_long_mapparser.c\
-			so_long_lst_utils.c
+			so_long_lst_utils.c\
+			so_long_init_game.c
 
 NAME		= so_long
 HEADER		= so_long.h

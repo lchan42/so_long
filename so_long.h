@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:34:21 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/30 19:15:44 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/30 20:48:08 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "./libraries/libft/libft.h"
 # include "./mlx_linux/mlx.h"
 
-
+# define WINDOW_NAME "my awesome game"
 # define IMG_X 32
 # define IMG_Y 32
 # define SO_LONG_ERROR "./so_long"
@@ -30,8 +30,8 @@
 
 typedef struct s_data{
 	char	**map;
-	int		map_x;
-	int		map_y;
+	int		win_x;
+	int		win_y;
 	void	*mlx_ptr;
 	void	*mlx_win;
 }t_data;
@@ -53,6 +53,9 @@ int	__mapchecker(t_list *lst);
 //so_long_mapparser.c
 char	**__mapparser(char *file);
 
+//so_long_init_game.c
+void	__initgame(t_data *data, char *file);
+
 //so_long_lst_utils.c
 void	__sl_free_lst(t_list **lst);
 int		__sl_nodcnt(t_list *lst);
@@ -66,5 +69,6 @@ void	__sl_free_tab(char  ** tab);
 // sl_visual.c
 void	vis_printmap_lst(t_list *lst);
 void	vis_printmap_tab(char ** tab);
+void	vis_struct(t_data *data);
 
 #endif
