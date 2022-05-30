@@ -6,13 +6,13 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 18:02:34 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/30 13:36:56 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/30 16:19:27 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_list	*__read_save_map(char *file)
+static t_list	*__read_save_map(char *file)
 {
 	int		map_fd;
 	char	*gnl;
@@ -34,9 +34,9 @@ t_list	*__read_save_map(char *file)
 }
 /***********************************
  * parse the map tho a chain list;
- * ********************************/
+ * *********************************/
 
-int	__file_is_ber(char *file)
+static int	__file_is_ber(char *file)
 {
 	int		dot;
 	char	*tmp;
@@ -48,28 +48,36 @@ int	__file_is_ber(char *file)
 	return (1);
 }
 
-char	**__lst_to_tab(t_list *lst_map, int map_height)
+static char	**__lst_to_tab(t_list **lst_map, int map_height)
 {
 	int		i;
 	char	**tab;
+	t_list	*tmp;
 
 	i = -1;
-	//tab = (char **)malloc(sizeof(char *) * map_height + 1);
 	tab = (char **)ft_calloc(map_height + 1, sizeof(char *));
-	while (lst_map)
+	while (*lst_map)
 	{
-		tab[i] = (char *)lst_map->content;
-		lst_map = lst_map->next;
+		tab[++i] = (char *)(*lst_map)->content;
+		tmp = *lst_map;
+		*lst_map = (*lst_map)->next;
+		free(tmp);
 	}
+	*lst_map = NULL;
 	return (tab);
 }
+/*************************************
+ * put the content of lst into a tab
+ * free each not of lst;
+ * ***********************************/
 
-void	__mapparser(char *file)
+char	**__mapparser(char *file)
 {
 	t_list	*lst_map;
 	int		map_height;
 	char	**tab_map;
 
+	tab_map = NULL;
 	if (__file_is_ber(file) == -1)
 		ft_puterror_exit("map is not .ber\n");
 	lst_map = __read_save_map(file);
@@ -82,11 +90,13 @@ void	__mapparser(char *file)
 		ft_puterror_exit("the map is unvalide\n");
 	}
 	if (lst_map)
-	{
-		//vis_printmap_lst(lst_map);
-		tab_map = __lst_to_tab(lst_map, map_height);
-		//__sl_free_lst(&lst_map);
-		vis_printmap_tab(tab_map);
-	}
+		tab_map = __lst_to_tab(&lst_map, map_height);
+	return (tab_map);
 }
 
+/*********************************************
+ * not really optimized.
+ * I read the map and stock it into a lst_map;
+ * then check for errors
+ * translate lst_map into tab_map.
+ * *******************************************/

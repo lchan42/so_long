@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:38:45 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/27 19:15:57 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/30 16:09:19 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,19 @@ static void	sl_mlx_init(void **mlx_ptr, void **mlx_win)
 */
 int	main(int ac, char **av)
 {
+	char	**map;
 //	void	*mlx_ptr;
 //	void	*mlx_win;
 
 	if (ac < 2)
 		return (0);
-	__mapparser(av[1]);
+	map = __mapparser(av[1]);
+	vis_printmap_tab(map);
+	__sl_free_tab(map);
 /*	sl_mlx_init(&mlx_ptr, &mlx_win);
 	mlx_pixel_put(mlx_ptr, mlx_win, WIN_W/2, WIN_H/2, 0xFF0000);
 	sleep(3);
-	mlx_destroy_display(mlx_ptr);
+	 mlx_destroy_display(mlx_ptr);
 	if (mlx_ptr)
 		free(mlx_ptr);
 	printf("end of function");*/

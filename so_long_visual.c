@@ -6,14 +6,15 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:53:37 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/30 13:33:37 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/30 16:24:46 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
 void	vis_printmap_lst(t_list *lst)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	printf("number of line = %d\n", sl_lst_nodcnt(lst));
@@ -24,13 +25,11 @@ void	vis_printmap_lst(t_list *lst)
 	}
 }
 
-void	vis_printmap_tab(char ** tab)
+void	vis_printmap_tab(char **tab)
 {
 	int	i;
 
 	i = -1;
-	while(tab[++i])
-	{
-		printf("%3d : %s\n", i, tab[i]);
-	}
+	while (tab[++i])
+		printf("%3d : %s", i, tab[i]);
 }
