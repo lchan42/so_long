@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:01:41 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/30 16:21:25 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/30 17:40:17 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	__sl_free_tab(char **tab)
 	tab = NULL;
 }
 
-int	sl_lst_nodcnt(t_list *lst)
+int	__sl_nodcnt(t_list *lst)
 {
 	int	i;
 
