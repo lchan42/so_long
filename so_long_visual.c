@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:53:37 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/26 13:03:47 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/30 13:33:37 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,16 @@ void	vis_printmap_lst(t_list *lst)
 	{
 		printf("%3d : %s", ++i, (char *)lst->content);
 		lst = lst->next;
+	}
+}
+
+void	vis_printmap_tab(char ** tab)
+{
+	int	i;
+
+	i = -1;
+	while(tab[++i])
+	{
+		printf("%3d : %s\n", i, tab[i]);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:34:21 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/27 18:22:19 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/30 13:36:08 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ int		sl_lst_nodcnt(t_list *lst);
 
 // sl_visual.c
 void	vis_printmap_lst(t_list *lst);
+void	vis_printmap_tab(char ** tab);
 
 #endif

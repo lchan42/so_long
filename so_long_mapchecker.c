@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 17:35:51 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/27 20:12:52 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/30 13:12:59 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,17 @@ static void	__vital_flag(char c, int *vital_flag)
 	else if (c == 'E')
 		*vital_flag |= E;
 	else if (c == 'P')
-		*vital_flag |= P;
+	{
+		if (*vital_flag & P)
+			*vital_flag += P;
+		else
+			*vital_flag |= P;
+	}
 }
+/*****************************************************
+ * Concerning P, we need only one starter point.
+ * 		thus we add the value of P to the flag if it's not the first one
+ * ***************************************************/
 
 static int	__linecheck_inter(char *str, int *vital_flag)
 {
@@ -82,18 +91,20 @@ int	__mapchecker(t_list *lst)
 	return (y);
 }
 /*****************************************************************
- * return: the number of nod in the list for futur malloc;
+ * return: number of nod in the list (for futur malloc);
  * error: return -1
  * declared value :
  * 		x = len of first line
  * 		y = nod cnt
  * 		vital_flag = check if there is at least C E P on the map;
- * description: check if
+ * 					(for P, check if there is only 1)
+ * description: we are checking if
  * 		empty map
  * 		all line has same len than first line
  * 		fist_line/last_line is full of 1;
  * 		inter_line
- * 			have 1 on edges
- * 			have at least C E P --> vital_flag | (bitwise or);
+ * 			hav 1 on edges
+ * 			hav at least C E P --> vital_flag | (bitwise or);
+ * 			has only autorised char
  * 		return (nbr nod);
  * ***************************************************************/
