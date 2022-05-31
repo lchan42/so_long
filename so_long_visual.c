@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:53:37 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/30 20:48:39 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/31 18:36:17 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	vis_printmap_lst(t_list *lst)
 	int	i;
 
 	i = -1;
-	printf("number of line = %d\n", __sl_nodcnt(lst));
 	while (lst)
 	{
 		printf("%3d : %s", ++i, (char *)lst->content);

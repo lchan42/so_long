@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:01:41 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/30 17:40:17 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/31 18:36:23 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,4 @@ void	__sl_free_tab(char **tab)
 		free(tab[i]);
 	free(tab);
 	tab = NULL;
-}
-
-int	__sl_nodcnt(t_list *lst)
-{
-	int	i;
-
-	i = 0;
-	while (lst && ++i)
-		lst = lst->next;
-	return (i);
 }

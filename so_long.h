@@ -6,25 +6,26 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:34:21 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/31 15:43:49 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/31 18:44:43 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include <errno.h>
+# include <fcntl.h>
 # include <unistd.h>
 # include <sys/wait.h>
-# include <errno.h>
-# include <sys/types.h>
 # include <sys/stat.h>
-# include <fcntl.h>
-# include "./libraries/libft/libft.h"
+# include <sys/types.h>
 # include "./mlx_linux/mlx.h"
+# include "./libraries/libft/libft.h"
 
 # define WINDOW_NAME "my awesome game"
 # define IMG_X 32
 # define IMG_Y 32
+# define WIN_RED_CROSS 17
 # define SO_LONG_ERROR "./so_long"
 # define MAP_CHAR "01CEP"
 
@@ -68,17 +69,15 @@ char	**__mapparser(char *file);
 //so_long_init_game.c
 void	__initgame(t_data *data, char *file);
 
+//so_long_game_loop.c
+void	__game_loop(t_data *data);
+
 //so_long_endgame.c
 void	__endgame(t_data *data);
 
 //so_long_lst_utils.c
 void	__sl_free_lst(t_list **lst);
-int		__sl_nodcnt(t_list *lst);
 void	__sl_free_tab(char  ** tab);
-
-
-
-
 
 
 // sl_visual.c
