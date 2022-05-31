@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:38:45 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/30 20:47:57 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/31 17:02:32 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,31 @@ int	main(int ac, char **av)
 	return (0);
 }*/
 
-void	__endgame(t_data *data)
+int	__game_move(int key, t_data *data)
 {
-	__sl_free_tab(data->map);
-	mlx_destroy_window(data->mlx_ptr, data->mlx_win);
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
+	if (key == W_U || key == ARW_U)
+		printf("go up\n");
+	else if (key == S_D || key == ARW_D)
+		printf("go down\n");
+	else if (key == D_R || key == ARW_R)
+		printf("go right\n");
+	else if (key == A_L || key == ARW_L)
+		printf("go left\n");
+	else if (key == ESC)
+	{
+		printf("key %d pressed\n", key);
+		mlx_loop_end(data->mlx_ptr);
+	}
+	return (0);
+}
+
+void	__game_loop(t_data *data)
+{
+	mlx_key_hook(data->mlx_win, __game_move, data);
+	// mlx_mouse_hook(data->mlx_win, __game_move, (void *)0);
+	// printf("starting to loop\n");
+	mlx_loop(data->mlx_ptr);
+	// printf("stop_looping\n");
 }
 
 int	main(int ac, char **av)
@@ -64,9 +83,7 @@ int	main(int ac, char **av)
 		return (0);
 	__initgame(&data, av[1]);
 	vis_struct(&data);
-
-	mlx_pixel_put(data.mlx_ptr, data.mlx_win, data.win_x/2, data.win_y/2, 0xFF0000);
-	sleep(1);
+	__game_loop(&data);
 	__endgame(&data);
 	return (0);
 }

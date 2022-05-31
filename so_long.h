@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:34:21 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/30 20:48:08 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/31 15:43:49 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,18 @@ enum map_char{
 	P = 4
 };
 
+enum e_key{
+	W_U		= 119,
+	S_D		= 115,
+	D_R		= 100,
+	A_L		= 97,
+	ARW_U	= 65362,
+	ARW_D 	= 65364,
+	ARW_R	= 65363,
+	ARW_L	= 65361,
+	ESC		= 65307
+};
+
 //so_long_mapchecker.c
 int	__mapchecker(t_list *lst);
 
@@ -55,6 +67,9 @@ char	**__mapparser(char *file);
 
 //so_long_init_game.c
 void	__initgame(t_data *data, char *file);
+
+//so_long_endgame.c
+void	__endgame(t_data *data);
 
 //so_long_lst_utils.c
 void	__sl_free_lst(t_list **lst);

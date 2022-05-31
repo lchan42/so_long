@@ -6,7 +6,7 @@
 #    By: lchan <lchan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 20:57:58 by lchan             #+#    #+#              #
-#    Updated: 2022/05/30 20:11:55 by lchan            ###   ########.fr        #
+#    Updated: 2022/05/31 16:22:32 by lchan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRCS	=	main.c\
 			so_long_mapchecker.c\
 			so_long_mapparser.c\
 			so_long_lst_utils.c\
-			so_long_init_game.c
+			so_long_initgame.c\
+			so_long_endgame.c
 
 NAME		= so_long
 HEADER		= so_long.h
@@ -48,11 +49,11 @@ $(NAME):	${OBJS}
 
 debug:		${OBJS}
 			${MAKE} -C ${LIBPATH} all
-			${CC} ${DEBUGFLAGS} -o ${NAME} ${OBJS} ${LIB} -L${LIBPATH}
+			${CC} ${DEBUGFLAGS} ${CFLAGS} ${OBJS} ${SOLONGFLAGS} -o ${NAME} ${LIB} -L${LIBPATH}
 
 g3:			${OBJS}
 			${MAKE} -C ${LIBPATH} all
-			${CC} -g3 -o ${NAME} ${OBJS} ${LIB} -L${LIBPATH}
+			${CC} -g3 ${CFLAGS} ${OBJS} ${SOLONGFLAGS} -o ${NAME} ${LIB} -L${LIBPATH}
 
 bonus:		${NAME} ${OBJS} ${OBJSBONUS}
 			${AR} ${ARFLAGS} ${NAME} ${OBJSBONUS}
