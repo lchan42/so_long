@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:34:21 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/31 18:44:43 by lchan            ###   ########.fr       */
+/*   Updated: 2022/05/31 22:00:56 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,26 @@
 # define WIN_RED_CROSS 17
 # define SO_LONG_ERROR "./so_long"
 # define MAP_CHAR "01CEP"
+# define GROUND_PATH "./sprites/red_ground.xpm"
 
+typedef struct s_img_d
+{
+	void	*ptr;
+	char	*addr;
+	int		bpp; /* bits per pixel */
+	int		width;
+	int		height;
+	int		endian;
+}	t_img_d;
+
+typedef struct s_img
+{
+	t_img_d	*p[4];
+	t_img_d	*g;
+	t_img_d	*w;
+	t_img_d	*c;
+	t_img_d	*e;
+}	t_img;
 typedef struct s_data{
 	char	**map;
 	int		win_x;
