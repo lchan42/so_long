@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:38:45 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/31 22:05:46 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/01 16:46:51 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,13 @@ int	main(int ac, char **av)
 int	main(int ac, char **av)
 {
 	t_data	data;
-	t_img_d	img;
 
 	if (ac < 2)
 		return (0);
 	__initgame(&data, av[1]);
-	img.ptr = mlx_xpm_file_to_image
-	(data.mlx_ptr, GROUND_PATH, &img.width, &img.height);
-	mlx_put_image_to_window(data.mlx_ptr, data.mlx_win, img.ptr, 0, 0);
-	//__initimage(&data);
+	//__display_images(&data);
+	//---->  mlx_put_image_to_window(data.mlx_ptr, data.mlx_win, img.ptr, 0, 0);
 	__game_loop(&data);
-	mlx_destroy_image(data.mlx_ptr, img.ptr);
 	__endgame(&data);
 	return (0);
 }

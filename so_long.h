@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:34:21 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/31 22:00:56 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/01 16:50:39 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,20 @@ typedef struct s_img_d
 
 typedef struct s_img
 {
-	t_img_d	*p[4];
-	t_img_d	*g;
-	t_img_d	*w;
-	t_img_d	*c;
-	t_img_d	*e;
+	t_img_d	p[4];
+	t_img_d	g;
+	t_img_d	w;
+	t_img_d	c;
+	t_img_d	e;
 }	t_img;
+
 typedef struct s_data{
 	char	**map;
 	int		win_x;
 	int		win_y;
 	void	*mlx_ptr;
 	void	*mlx_win;
+	t_img	img;
 }t_data;
 
 enum error{
@@ -77,6 +79,13 @@ enum e_key{
 	ARW_R	= 65363,
 	ARW_L	= 65361,
 	ESC		= 65307
+};
+
+enum e_player_mvt{
+	P_UP,
+	P_DOWN,
+	P_RIGHT,
+	P_LEFT
 };
 
 //so_long_mapchecker.c

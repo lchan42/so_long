@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:27:32 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/31 18:40:50 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/01 16:30:08 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static int	__game_move(int key, t_data *data)
 		printf("go left\n");
 	else if (key == ESC)
 		mlx_loop_end(data->mlx_ptr);
-	printf("%d\n", key);
 	return (0
 	);
 }
