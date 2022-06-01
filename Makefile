@@ -6,7 +6,7 @@
 #    By: lchan <lchan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 20:57:58 by lchan             #+#    #+#              #
-#    Updated: 2022/05/31 18:37:14 by lchan            ###   ########.fr        #
+#    Updated: 2022/06/01 17:13:10 by lchan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,14 @@ LIBPATH = ./libraries/libft
 LIB	= ./libraries/libft/libft.a
 
 SRCS	=	main.c\
-			so_long_visual.c\
-			so_long_mapchecker.c\
-			so_long_mapparser.c\
-			so_long_lst_utils.c\
-			so_long_initgame.c\
-			so_long_game_loop.c\
-			so_long_endgame.c
+			sl_visual.c\
+			sl_mapchecker.c\
+			sl_mapparser.c\
+			sl_lst_utils.c\
+			sl_initgame.c\
+			sl_img_init.c\
+			sl_game_loop.c\
+			sl_endgame.c
 
 NAME		= so_long
 HEADER		= so_long.h

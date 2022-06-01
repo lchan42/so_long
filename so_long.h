@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:34:21 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/01 16:50:39 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/01 18:35:29 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,27 @@
 # define WIN_RED_CROSS 17
 # define SO_LONG_ERROR "./so_long"
 # define MAP_CHAR "01CEP"
-# define GROUND_PATH "./sprites/red_ground.xpm"
-
-typedef struct s_img_d
-{
-	void	*ptr;
-	char	*addr;
-	int		bpp; /* bits per pixel */
-	int		width;
-	int		height;
-	int		endian;
-}	t_img_d;
+# define SPRITES_CNT 8
+# define P_UP_PATH "./sprites/test_player.xpm"
+# define P_DOWN_PATH "./sprites/test_player.xpm"
+# define P_RIGHT_PATH "./sprites/test_player.xpm"
+# define P_LEFT_PATH "./sprites/test_player.xpm"
+# define GROUND_PATH "./sprites/test_ground.xpm"
+# define WALL_PATH "./sprites/test_wall.xpm"
+# define COIN_PATH "./sprites/test_coin.xpm"
+# define EXIT_PATH "./sprites/test_exit.xpm"
 
 typedef struct s_img
+{
+	void	*ptr;
+	char	*path;
+	int		bpp;	//-->not initialized val
+	int		width;
+	int		height;
+	int		endian;	//-->not initialized val
+}	t_img;
+
+/*typedef struct s_img
 {
 	t_img_d	p[4];
 	t_img_d	g;
@@ -48,14 +56,14 @@ typedef struct s_img
 	t_img_d	c;
 	t_img_d	e;
 }	t_img;
-
+*/
 typedef struct s_data{
 	char	**map;
 	int		win_x;
 	int		win_y;
 	void	*mlx_ptr;
 	void	*mlx_win;
-	t_img	img;
+	t_img	img[8];
 }t_data;
 
 enum error{
@@ -81,18 +89,25 @@ enum e_key{
 	ESC		= 65307
 };
 
-enum e_player_mvt{
+enum e_img_struct_indice{
 	P_UP,
 	P_DOWN,
 	P_RIGHT,
-	P_LEFT
+	P_LEFT,
+	GROUND,
+	WALL,
+	COIN,
+	EXIT
 };
 
 //so_long_mapchecker.c
-int	__mapchecker(t_list *lst);
+int		__mapchecker(t_list *lst);
 
 //so_long_mapparser.c
 char	**__mapparser(char *file);
+
+//sl_img_init.c
+void	__img_init(t_data *data, t_img *img);
 
 //so_long_init_game.c
 void	__initgame(t_data *data, char *file);
