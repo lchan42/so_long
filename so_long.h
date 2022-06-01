@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:34:21 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/01 18:35:29 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/02 00:14:44 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define WINDOW_NAME "my awesome game"
 # define IMG_X 32
 # define IMG_Y 32
+//# define MAX_X //-->NEEDED TO PROTECT FROM TOO BIG MAPS
+//# define MAX_Y
 # define WIN_RED_CROSS 17
 # define SO_LONG_ERROR "./so_long"
 # define MAP_CHAR "01CEP"
@@ -42,33 +44,26 @@ typedef struct s_img
 {
 	void	*ptr;
 	char	*path;
-	int		bpp;	//-->not initialized val
+	int		bpp;	//-->unused val
 	int		width;
 	int		height;
-	int		endian;	//-->not initialized val
+	int		endian;	//-->unused val
 }	t_img;
 
-/*typedef struct s_img
-{
-	t_img_d	p[4];
-	t_img_d	g;
-	t_img_d	w;
-	t_img_d	c;
-	t_img_d	e;
-}	t_img;
-*/
 typedef struct s_data{
 	char	**map;
 	int		win_x;
 	int		win_y;
 	void	*mlx_ptr;
 	void	*mlx_win;
-	t_img	img[8];
+	t_img	img[SPRITES_CNT];
 }t_data;
 
 enum error{
 	UNVALID_MAP,
-	MLX_ERROR,
+	MLX_INIT_FAIL,
+	WIN_INIT_FAIL,
+	MLX_XPM_FAIL
 };
 
 enum map_char{
@@ -117,11 +112,11 @@ void	__game_loop(t_data *data);
 
 //so_long_endgame.c
 void	__endgame(t_data *data);
+void	__endgame_exit(t_data *data, int error_code);
 
 //so_long_lst_utils.c
 void	__sl_free_lst(t_list **lst);
 void	__sl_free_tab(char  ** tab);
-
 
 // sl_visual.c
 void	vis_printmap_lst(t_list *lst);

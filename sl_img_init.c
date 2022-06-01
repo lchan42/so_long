@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 17:10:59 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/01 21:39:41 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/02 00:11:58 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,14 @@ void	__img_init(t_data *data, t_img *img)
 
 	i = -1;
 	while (++i < SPRITES_CNT)
+	{
 		__add_path(&img[i], i);
-	i = -1;
+		if (__file_to_img(data, &img[i]) == -1)
+			__endgame_exit(data, MLX_XPM_FAIL);
+	}
+}
+
+/*	i = -1;
 	while (++i < SPRITES_CNT)
 		if (__file_to_img(data, &img[i]) == -1)
-			printf("ERROR\n");
-	mlx_put_image_to_window(
-		data->mlx_ptr, data->mlx_win, img[GROUND].ptr, 0, 0);
-	mlx_put_image_to_window(
-		data->mlx_ptr, data->mlx_win, img[GROUND].ptr, 32, 32);
-}
+			__endgame_exit(data, MLX_XPM_FAIL);*/
