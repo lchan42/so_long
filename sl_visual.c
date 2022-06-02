@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:53:37 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/02 00:03:40 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/02 15:04:41 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ void	vis_all_imgs(t_img *img)
 void	vis_struct(t_data *data)
 {
 	//printf("map address = %p\n", data->map);
-	//vis_printmap_tab(data->map);
-	printf("win_x = %d, win_y = %d\n", data->win_x, data->win_y);
-	printf("mlx_ptr = %p\n", data->mlx_ptr);
-	printf("mlx_win = %p\n", data->mlx_win);
-	vis_all_imgs(data->img);
+	vis_printmap_tab(data->map);
+	//printf("win_x = %d, win_y = %d\n", data->win_x, data->win_y);
+	//printf("mlx_ptr = %p\n", data->mlx_ptr);
+	//printf("mlx_win = %p\n", data->mlx_win);
+	//vis_all_imgs(data->img);
 }

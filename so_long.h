@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:34:21 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/02 00:14:44 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/02 15:08:37 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,9 @@ void	__img_init(t_data *data, t_img *img);
 
 //so_long_init_game.c
 void	__initgame(t_data *data, char *file);
+
+//sl_display_imgs.c
+void	__display(t_data *data);
 
 //so_long_game_loop.c
 void	__game_loop(t_data *data);

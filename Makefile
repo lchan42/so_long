@@ -6,7 +6,7 @@
 #    By: lchan <lchan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 20:57:58 by lchan             #+#    #+#              #
-#    Updated: 2022/06/01 17:13:10 by lchan            ###   ########.fr        #
+#    Updated: 2022/06/02 15:06:17 by lchan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS	=	main.c\
 			sl_lst_utils.c\
 			sl_initgame.c\
 			sl_img_init.c\
+			sl_display_imgs.c\
 			sl_game_loop.c\
 			sl_endgame.c
 
