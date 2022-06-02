@@ -6,12 +6,11 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:27:32 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/02 23:43:09 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/03 00:15:17 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 static void	__put_image(t_data *data, void *img_ptr, int x, int y)
 {
@@ -23,8 +22,6 @@ static void	__put_image(t_data *data, void *img_ptr, int x, int y)
 			x * IMG_X,
 			y * IMG_Y
 			);
-	//else
-	//	free all;
 }
 
 static int	__can_i_go(t_data *data, char map_elem)
@@ -36,7 +33,7 @@ static int	__can_i_go(t_data *data, char map_elem)
 
 static void	__mvt_player(t_data *data, int mvt, int target_x, int target_y)
 {
-	char map_elem;
+	char	map_elem;
 
 	map_elem = data->map[target_y][target_x];
 	if (__can_i_go(data, map_elem))
@@ -51,24 +48,27 @@ static void	__mvt_player(t_data *data, int mvt, int target_x, int target_y)
 			data->p.y = target_y;
 		else if (mvt == P_RIGHT || mvt == P_LEFT)
 			data->p.x = target_x;
+		ft_putnbr_fd(++data->p.mvt, 1);
+		ft_putchar_fd('\n', 1);
+		//mlx_string_put(data->mlx_ptr, data->mlx_win, 32, 32, STRING_COLOR, ft_itoa(++data->p.mvt));
 	}
 	__put_image(data, data->img[mvt].ptr, data->p.x, data->p.y);
 	if (data->map[data->p.y][data->p.x] == 'E')
 	{
-		ft_putstr_fd("bravo\n", 2);
+		ft_putstr_fd(FINAL_MESSAGE, 1);
 		mlx_loop_end(data->mlx_ptr);
 	}
 }
 
 static int	__game_move(int key, t_data *data)
 {
-	if (key == W_U || key == ARW_U)
+	if (key == KEY_W || key == ARW_U)
 		__mvt_player(data, P_UP, data->p.x, data->p.y -1);
-	else if (key == S_D || key == ARW_D)
+	else if (key == KEY_S || key == ARW_D)
 		__mvt_player(data, P_DOWN, data->p.x, data->p.y +1);
-	else if (key == D_R || key == ARW_R)
+	else if (key == KEY_D || key == ARW_R)
 		__mvt_player(data, P_RIGHT, data->p.x + 1, data->p.y);
-	else if (key == A_L || key == ARW_L)
+	else if (key == KEY_A || key == ARW_L)
 		__mvt_player(data, P_LEFT, data->p.x - 1, data->p.y);
 	else if (key == ESC)
 		mlx_loop_end(data->mlx_ptr);

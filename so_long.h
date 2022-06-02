@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:34:21 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/02 23:11:52 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/03 00:12:55 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@
 //# define MAX_X //-->NEEDED TO PROTECT FROM TOO BIG MAPS
 //# define MAX_Y
 # define WIN_RED_CROSS 17
-# define SO_LONG_ERROR "./so_long"
+# define SO_LONG_ERROR "error"
+# define STRING_COLOR 0xFF0000
+# define FINAL_MESSAGE "so_long, thank you for the fish\n"
 # define MAP_CHAR "01CEP"
 # define SPRITES_CNT 8
 # define P_UP_PATH "./sprites/test_p_up.xpm"
@@ -82,10 +84,10 @@ enum map_char{
 };
 
 enum e_key{
-	W_U		= 119,
-	S_D		= 115,
-	D_R		= 100,
-	A_L		= 97,
+	KEY_W		= 119,
+	KEY_S		= 115,
+	KEY_D		= 100,
+	KEY_A		= 97,
 	ARW_U	= 65362,
 	ARW_D 	= 65364,
 	ARW_R	= 65363,
