@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:13:23 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/02 00:05:17 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/02 16:50:45 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ static void	__set_t_data_null(t_data *data)
 	data->win_y = -1;
 	data->mlx_ptr = NULL;
 	data->mlx_win = NULL;
+	data->p.mvt = 0;
+	data->p.coin = 0;
+	data->p.x = -1;
+	data->p.y = -1;
 	while (++i < SPRITES_CNT)
 	{
 		data->img[i].ptr = NULL;
@@ -63,7 +67,7 @@ static void	__mlx_init(t_data *data)
 
 static void __win_init(t_data *data)
 {
-	data->win_x = ft_strlen(data->map[0]) * IMG_X;
+	data->win_x = (ft_strlen(data->map[0]) -1)* IMG_X;
 	data->win_y = __map_height(data->map) * IMG_Y;
 	data->mlx_win = mlx_new_window(
 		data->mlx_ptr,

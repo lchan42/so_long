@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:34:21 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/02 15:08:37 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/02 16:50:52 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@
 # define SO_LONG_ERROR "./so_long"
 # define MAP_CHAR "01CEP"
 # define SPRITES_CNT 8
-# define P_UP_PATH "./sprites/test_player.xpm"
-# define P_DOWN_PATH "./sprites/test_player.xpm"
-# define P_RIGHT_PATH "./sprites/test_player.xpm"
-# define P_LEFT_PATH "./sprites/test_player.xpm"
+# define P_UP_PATH "./sprites/test_p_up.xpm"
+# define P_DOWN_PATH "./sprites/test_p_down.xpm"
+# define P_RIGHT_PATH "./sprites/test_p_right.xpm"
+# define P_LEFT_PATH "./sprites/test_p_left.xpm"
 # define GROUND_PATH "./sprites/test_ground.xpm"
 # define WALL_PATH "./sprites/test_wall.xpm"
 # define COIN_PATH "./sprites/test_coin.xpm"
@@ -50,13 +50,22 @@ typedef struct s_img
 	int		endian;	//-->unused val
 }	t_img;
 
+typedef struct s_player
+{
+	int	mvt;
+	int	coin;
+	int	x;
+	int	y;
+}	t_player;
+
 typedef struct s_data{
-	char	**map;
-	int		win_x;
-	int		win_y;
-	void	*mlx_ptr;
-	void	*mlx_win;
-	t_img	img[SPRITES_CNT];
+	char		**map;
+	int			win_x;
+	int			win_y;
+	void		*mlx_ptr;
+	void		*mlx_win;
+	t_player	p;
+	t_img		img[SPRITES_CNT];
 }t_data;
 
 enum error{
@@ -108,7 +117,7 @@ void	__img_init(t_data *data, t_img *img);
 void	__initgame(t_data *data, char *file);
 
 //sl_display_imgs.c
-void	__display(t_data *data);
+void	__display_imgs(t_data *data);
 
 //so_long_game_loop.c
 void	__game_loop(t_data *data);

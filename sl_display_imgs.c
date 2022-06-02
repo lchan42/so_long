@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 14:43:53 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/02 15:50:46 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/02 16:54:39 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,25 @@ static void	*__get_corresponding_img_ptr(t_img *img, char c)
 	return (NULL);
 }
 
-void	__put_image(t_data *data, int x, int y)
+static void	__init_t_player(t_data *data, char c, int x, int y)
+{
+	if (c == 'P')
+	{
+		data->p.x = x;
+		data->p.y = y;
+	}
+	else if (c == 'C')
+		data->p.coin++;
+}
+
+static void	__put_image(t_data *data, int x, int y)
 {
 	void	*img_ptr;
+	char	c;
 
-	img_ptr = __get_corresponding_img_ptr(data->img, data->map[y][x]);
+	c = data->map[y][x];
+	__init_t_player(data, c, x, y);
+	img_ptr = __get_corresponding_img_ptr(data->img, c);
 	if (img_ptr)
 		mlx_put_image_to_window(
 			data->mlx_ptr,
@@ -52,8 +66,11 @@ void	__put_image(t_data *data, int x, int y)
 			y * IMG_Y
 			);
 }
+/**********************************************************
+ * it's kind of dirty but I'm initializing t_player here;
+ * ********************************************************/
 
-void	__display(t_data *data)
+void	__display_imgs(t_data *data)
 {
 	int	x;
 	int	y;

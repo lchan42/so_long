@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:53:37 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/02 15:04:41 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/02 16:51:21 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,15 @@ void	vis_all_imgs(t_img *img)
 		vis_img_struct(&img[i]);
 }
 
+void	vis_p(t_player p)
+{
+	printf("p.mvt = %d\n", p.mvt);
+	printf("p.coin = %d\n", p.coin);
+	printf("p.x = %d\n", p.x);
+	printf("p.y = %d\n", p.y);
+
+}
+
 void	vis_struct(t_data *data)
 {
 	//printf("map address = %p\n", data->map);
@@ -60,5 +69,6 @@ void	vis_struct(t_data *data)
 	//printf("win_x = %d, win_y = %d\n", data->win_x, data->win_y);
 	//printf("mlx_ptr = %p\n", data->mlx_ptr);
 	//printf("mlx_win = %p\n", data->mlx_win);
+	vis_p(data->p);
 	//vis_all_imgs(data->img);
 }

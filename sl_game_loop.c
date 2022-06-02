@@ -1,17 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_game_loop.c                                :+:      :+:    :+:   */
+/*   sl_game_loop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:27:32 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/01 16:30:08 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/02 16:49:36 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*
+static void	__move_up(t_data *data)
+{
+	if ()
+}
+*/
 static int	__game_move(int key, t_data *data)
 {
 	if (key == W_U || key == ARW_U)
@@ -24,8 +30,7 @@ static int	__game_move(int key, t_data *data)
 		printf("go left\n");
 	else if (key == ESC)
 		mlx_loop_end(data->mlx_ptr);
-	return (0
-	);
+	return (0);
 }
 
 void	__game_loop(t_data *data)

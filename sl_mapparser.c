@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_mapparser.c                                :+:      :+:    :+:   */
+/*   sl_mapparser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 18:02:34 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/30 16:19:27 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/02 16:31:38 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ static char	**__lst_to_tab(t_list **lst_map, int map_height)
 
 	i = -1;
 	tab = (char **)ft_calloc(map_height + 1, sizeof(char *));
+	if (!tab)
+	{
+		__sl_free_lst(lst_map);
+		ft_puterror_exit("malloc tab fail\n");
+	}
 	while (*lst_map)
 	{
 		tab[++i] = (char *)(*lst_map)->content;

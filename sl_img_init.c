@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 17:10:59 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/02 00:11:58 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/02 16:19:12 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,3 @@ void	__img_init(t_data *data, t_img *img)
 			__endgame_exit(data, MLX_XPM_FAIL);
 	}
 }
-
-/*	i = -1;
-	while (++i < SPRITES_CNT)
-		if (__file_to_img(data, &img[i]) == -1)
-			__endgame_exit(data, MLX_XPM_FAIL);*/
