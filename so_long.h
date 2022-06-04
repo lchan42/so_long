@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:34:21 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/04 17:52:01 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/04 18:53:08 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define WIN_RED_CROSS 17
 # define SO_LONG_ERROR "error"
 # define STRING_COLOR 0xFF0000
-# define FINAL_MESSAGE "so_long, thank you playing\n"
+# define FINAL_MESSAGE "so_long, thank you for playing\n"
 # define MAP_CHAR "01CEP"
 # define SPRITES_CNT 8
 # define P_UP_PATH "./sprites/pokemon_p_up.xpm"

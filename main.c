@@ -6,16 +6,18 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:38:45 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/02 16:19:58 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/04 18:31:54 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char **av)
+int	main(int ac, char **av, char **envp)
 {
 	t_data	data;
 
+	if (*envp == NULL)
+		exit(1);
 	if (ac < 2)
 		return (0);
 	__initgame(&data, av[1]);

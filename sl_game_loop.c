@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:27:32 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/03 00:15:17 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/04 18:48:03 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ static void	__mvt_player(t_data *data, int mvt, int target_x, int target_y)
 			data->p.y = target_y;
 		else if (mvt == P_RIGHT || mvt == P_LEFT)
 			data->p.x = target_x;
+		//++data->p.mvt;
 		ft_putnbr_fd(++data->p.mvt, 1);
 		ft_putchar_fd('\n', 1);
-		//mlx_string_put(data->mlx_ptr, data->mlx_win, 32, 32, STRING_COLOR, ft_itoa(++data->p.mvt));
 	}
 	__put_image(data, data->img[mvt].ptr, data->p.x, data->p.y);
 	if (data->map[data->p.y][data->p.x] == 'E')
@@ -62,6 +62,8 @@ static void	__mvt_player(t_data *data, int mvt, int target_x, int target_y)
 
 static int	__game_move(int key, t_data *data)
 {
+	char *tmp;
+
 	if (key == KEY_W || key == ARW_U)
 		__mvt_player(data, P_UP, data->p.x, data->p.y -1);
 	else if (key == KEY_S || key == ARW_D)
@@ -72,6 +74,16 @@ static int	__game_move(int key, t_data *data)
 		__mvt_player(data, P_LEFT, data->p.x - 1, data->p.y);
 	else if (key == ESC)
 		mlx_loop_end(data->mlx_ptr);
+	mlx_put_image_to_window(
+			data->mlx_ptr,
+			data->mlx_win,
+			data->img[WALL].ptr,
+			0,
+			0
+			);
+	tmp = ft_itoa(data->p.mvt);
+	mlx_string_put(data->mlx_ptr, data->mlx_win, 10, 10, STRING_COLOR, tmp);
+	free(tmp);
 	return (0);
 }
 

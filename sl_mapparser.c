@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 18:02:34 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/02 16:31:38 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/04 18:42:40 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ char	**__mapparser(char *file)
 	char	**tab_map;
 
 	tab_map = NULL;
-	if (__file_is_ber(file) == -1)
+	if (__file_is_ber(file) == -1
+		|| (__file_is_ber(file) && (ft_strlen(file) <= 4)))
 		ft_puterror_exit("map is not .ber\n");
 	lst_map = __read_save_map(file);
 	map_height = __mapchecker(lst_map);
