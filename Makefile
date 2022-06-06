@@ -6,10 +6,9 @@
 #    By: lchan <lchan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 20:57:58 by lchan             #+#    #+#              #
-#    Updated: 2022/06/02 15:06:17 by lchan            ###   ########.fr        #
+#    Updated: 2022/06/06 14:48:27 by lchan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 LIBPATH = ./libraries/libft
 LIB	= ./libraries/libft/libft.a
@@ -18,19 +17,32 @@ SRCS	=	main.c\
 			sl_visual.c\
 			sl_mapchecker.c\
 			sl_mapparser.c\
-			sl_lst_utils.c\
+			sl_free_utils.c\
 			sl_initgame.c\
 			sl_img_init.c\
 			sl_display_imgs.c\
 			sl_game_loop.c\
-			sl_endgame.c
+			sl_endgame.c\
 
-NAME		= so_long
-HEADER		= so_long.h
+SRCS_BONUS	=	main.c\
+				sl_visual.c\
+				sl_mapchecker.c\
+				sl_mapparser.c\
+				sl_free_utils.c\
+				sl_initgame.c\
+				sl_img_init.c\
+				sl_display_imgs.c\
+				bonus_sl_game_loop.c\
+				sl_endgame.c\
+
+NAME			= so_long
+NAME_BONUS		= so_long_bonus
+HEADER			= so_long.h
 
 OBJS		= ${SRCS:.c=.o}
 
-OBJSBONUS	= ${SRCSBONUS:.c=.o}
+OBJS_BONUS	= ${SRCS_BONUS:.c=.o}
+
 %.o: %.c
 			${CC} ${CFLAGS} -c $< -o $@
 
@@ -43,12 +55,19 @@ DEBUGFLAGS	= -g3 -fsanitize=address
 
 
 all:		${NAME}
+bonus:		${NAME_BONUS}
 
 ${OBJS}:	${HEADER}
 
-$(NAME):	${OBJS}
+${OBJS_BONUS}:	${HEADER}
+
+${NAME}:	${OBJS}
 			${MAKE} -C ${LIBPATH} all
 			${CC} ${CFLAGS} ${OBJS} ${SOLONGFLAGS} -o ${NAME} ${LIB} -L${LIBPATH}
+
+${NAME_BONUS}:	${OBJS_BONUS}
+				${MAKE} -C ${LIBPATH} all
+				${CC} ${CFLAGS} ${OBJS_BONUS} ${SOLONGFLAGS} -o ${NAME_BONUS} ${LIB} -L${LIBPATH}
 
 debug:		${OBJS}
 			${MAKE} -C ${LIBPATH} all
@@ -58,20 +77,17 @@ g3:			${OBJS}
 			${MAKE} -C ${LIBPATH} all
 			${CC} -g3 ${CFLAGS} ${OBJS} ${SOLONGFLAGS} -o ${NAME} ${LIB} -L${LIBPATH}
 
-bonus:		${NAME} ${OBJS} ${OBJSBONUS}
-			${AR} ${ARFLAGS} ${NAME} ${OBJSBONUS}
-
 cleanlib :
 			${MAKE} -C ${LIBPATH} clean
 
 clean:		cleanlib
-			${RM} ${OBJS} ${OBJSBONUS}
+			${RM} ${OBJS} ${OBJS_BONUS}
 
 cleanb:		clean
 			${RM} ${OBJSBONUS}
 
 fclean:		clean
-			${RM} ${NAME}
+			${RM} ${NAME} ${NAME_BONUS}
 
 re:			fclean all
 

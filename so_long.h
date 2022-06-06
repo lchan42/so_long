@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:34:21 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/04 18:53:08 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/06 13:28:18 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@
 # define WINDOW_NAME "my awesome game"
 # define IMG_X 32
 # define IMG_Y 32
-//# define MAX_X //-->NEEDED TO PROTECT FROM TOO BIG MAPS
-//# define MAX_Y
+# define MAX_X 2560
+# define MAX_Y 1344
 # define WIN_RED_CROSS 17
 # define SO_LONG_ERROR "error"
 # define STRING_COLOR 0xFF0000
-# define FINAL_MESSAGE "so_long, thank you for playing\n"
+# define FINAL_MESSAGE "So long, thank you for playing\n"
 # define MAP_CHAR "01CEP"
 # define SPRITES_CNT 8
 # define P_UP_PATH "./sprites/pokemon_p_up.xpm"
@@ -71,6 +71,7 @@ typedef struct s_data{
 }t_data;
 
 enum error{
+
 	UNVALID_MAP,
 	MLX_INIT_FAIL,
 	WIN_INIT_FAIL,
@@ -128,7 +129,7 @@ void	__game_loop(t_data *data);
 void	__endgame(t_data *data);
 void	__endgame_exit(t_data *data, int error_code);
 
-//so_long_lst_utils.c
+//so_long_free_utils.c
 void	__sl_free_lst(t_list **lst);
 void	__sl_free_tab(char  ** tab);
 

@@ -6,22 +6,11 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:13:23 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/02 16:50:45 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/06 13:26:24 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-/*
-static void	__set_t_img_zero(t_img *img)
-{
-	img->ptr = NULL;
-	img->path = NULL;
-	img->bpp = -1;
-	img->width = -1;
-	img->height = -1;
-	img->endian = -1;
-}*/
 
 static void	__set_t_data_null(t_data *data)
 {
@@ -69,6 +58,8 @@ static void __win_init(t_data *data)
 {
 	data->win_x = (ft_strlen(data->map[0]) -1)* IMG_X;
 	data->win_y = __map_height(data->map) * IMG_Y;
+	if (data->win_x > MAX_X || data->win_y > MAX_Y)
+		__endgame_exit(data, UNVALID_MAP);
 	data->mlx_win = mlx_new_window(
 		data->mlx_ptr,
 		data->win_x,
@@ -83,7 +74,7 @@ void	__initgame(t_data *data, char *file)
 	__set_t_data_null(data);
 	data->map = __mapparser(file);
 	if (!data->map)
-		ft_puterror_exit(SO_LONG_ERROR);
+		ft_puterror_exit("Error\nFail to parse map\n");
 	__mlx_init(data);
 	__win_init(data);
 	__img_init(data, data->img);

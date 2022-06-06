@@ -6,11 +6,23 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 18:02:34 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/04 18:42:40 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/06 13:16:05 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static int	__file_is_ber(char *file)
+{
+	int		dot;
+	char	*tmp;
+
+	dot = ft_find_last_c_occurence(file, '.');
+	tmp = file + dot;
+	if (dot == 0 || ft_strncmp(tmp, "ber", 4) != 0)
+		return (-1);
+	return (1);
+}
 
 static t_list	*__read_save_map(char *file)
 {
@@ -36,18 +48,6 @@ static t_list	*__read_save_map(char *file)
  * parse the map tho a chain list;
  * *********************************/
 
-static int	__file_is_ber(char *file)
-{
-	int		dot;
-	char	*tmp;
-
-	dot = ft_find_last_c_occurence(file, '.');
-	tmp = file + dot;
-	if (dot == 0 || ft_strncmp(tmp, "ber", 4) != 0)
-		return (-1);
-	return (1);
-}
-
 static char	**__lst_to_tab(t_list **lst_map, int map_height)
 {
 	int		i;
@@ -59,7 +59,7 @@ static char	**__lst_to_tab(t_list **lst_map, int map_height)
 	if (!tab)
 	{
 		__sl_free_lst(lst_map);
-		ft_puterror_exit("malloc tab fail\n");
+		ft_puterror_exit("Error\nmalloc tab fail\n");
 	}
 	while (*lst_map)
 	{
@@ -85,15 +85,15 @@ char	**__mapparser(char *file)
 	tab_map = NULL;
 	if (__file_is_ber(file) == -1
 		|| (__file_is_ber(file) && (ft_strlen(file) <= 4)))
-		ft_puterror_exit("map is not .ber\n");
+		ft_puterror_exit("Error\nmap is not .ber\n");
 	lst_map = __read_save_map(file);
 	map_height = __mapchecker(lst_map);
 	if (!lst_map)
-		ft_puterror_exit("map not readable\n");
+		ft_puterror_exit("Error\nmap not readable\n");
 	if (map_height < 3)
 	{
 		__sl_free_lst(&lst_map);
-		ft_puterror_exit("the map is unvalide\n");
+		ft_puterror_exit("Error\nthe map is unvalide\n");
 	}
 	if (lst_map)
 		tab_map = __lst_to_tab(&lst_map, map_height);
@@ -105,4 +105,7 @@ char	**__mapparser(char *file)
  * I read the map and stock it into a lst_map;
  * then check for errors
  * translate lst_map into tab_map.
+ * ps: the if(map_height < 3) condition is needed coz:
+ * 		__mapchecker doesn't check if intermediate lines exit or not
+ * 		if we remove it, maps with only 2lines of walls would be accepted
  * *******************************************/
