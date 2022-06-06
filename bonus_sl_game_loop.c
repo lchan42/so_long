@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:27:32 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/06 14:15:29 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/06 14:52:26 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	__mvt_player(t_data *data, int mvt, int target_x, int target_y)
 
 static int	__game_move(int key, t_data *data)
 {
-	char *tmp;
+	char	*tmp;
 
 	if (key == KEY_W || key == ARW_U)
 		__mvt_player(data, P_UP, data->p.x, data->p.y -1);
@@ -73,12 +73,12 @@ static int	__game_move(int key, t_data *data)
 	else if (key == ESC)
 		mlx_loop_end(data->mlx_ptr);
 	mlx_put_image_to_window(
-			data->mlx_ptr,
-			data->mlx_win,
-			data->img[WALL].ptr,
-			0,
-			0
-			);
+		data->mlx_ptr,
+		data->mlx_win,
+		data->img[WALL].ptr,
+		0,
+		0
+		);
 	tmp = ft_itoa(data->p.mvt);
 	mlx_string_put(data->mlx_ptr, data->mlx_win, 10, 10, STRING_COLOR, tmp);
 	free(tmp);

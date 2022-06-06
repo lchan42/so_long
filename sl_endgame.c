@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:19:35 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/06 13:25:48 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/06 14:53:35 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	__put_err_msg(int error_code)
 	[WIN_INIT_FAIL] = "mlx window error\n",
 	[MLX_XPM_FAIL] = "failure in creating new image\n"
 	};
+
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd((char *)err_msg[error_code], 2);
 }

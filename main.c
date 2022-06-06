@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:38:45 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/04 18:31:54 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/06 14:57:27 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int ac, char **av, char **envp)
 		return (0);
 	__initgame(&data, av[1]);
 	__display_imgs(&data);
-	vis_struct(&data);
 	__game_loop(&data);
 	__endgame(&data);
 	return (0);

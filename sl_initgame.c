@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:13:23 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/06 13:26:24 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/06 14:55:07 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ static int	__map_height(char **map)
 {
 	int	i;
 
-	i= 0;
+	i = 0;
 	while (map[i])
 		i++;
-	return(i);
+	return (i);
 }
 
 static void	__mlx_init(t_data *data)
@@ -54,17 +54,17 @@ static void	__mlx_init(t_data *data)
 		__endgame_exit(data, MLX_INIT_FAIL);
 }
 
-static void __win_init(t_data *data)
+static void	__win_init(t_data *data)
 {
-	data->win_x = (ft_strlen(data->map[0]) -1)* IMG_X;
+	data->win_x = (ft_strlen(data->map[0]) - 1) * IMG_X;
 	data->win_y = __map_height(data->map) * IMG_Y;
 	if (data->win_x > MAX_X || data->win_y > MAX_Y)
 		__endgame_exit(data, UNVALID_MAP);
 	data->mlx_win = mlx_new_window(
-		data->mlx_ptr,
-		data->win_x,
-		data->win_y,
-		WINDOW_NAME);
+			data->mlx_ptr,
+			data->win_x,
+			data->win_y,
+			WINDOW_NAME);
 	if (!data->mlx_win)
 		__endgame_exit(data, WIN_INIT_FAIL);
 }
@@ -79,4 +79,3 @@ void	__initgame(t_data *data, char *file)
 	__win_init(data);
 	__img_init(data, data->img);
 }
-
