@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:38:45 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/06 14:57:27 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/06 16:10:51 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	main(int ac, char **av, char **envp)
 {
 	t_data	data;
 
-	if (*envp == NULL)
-		exit(1);
 	if (ac < 2)
-		return (0);
+		ft_puterror_exit("Error\na map is needed\n");
+	if (*envp == NULL)
+		ft_puterror_exit("Error\nno envp\n");
 	__initgame(&data, av[1]);
 	__display_imgs(&data);
 	__game_loop(&data);

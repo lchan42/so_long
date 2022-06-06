@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_mapchecker.c                               :+:      :+:    :+:   */
+/*   sl_mapchecker.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 17:35:51 by lchan             #+#    #+#             */
-/*   Updated: 2022/05/30 13:12:59 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/06 15:55:02 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,9 @@ int	__mapchecker(t_list *lst)
  * 		all line has same len than first line
  * 		fist_line/last_line is full of 1;
  * 		inter_line
- * 			hav 1 on edges
- * 			hav at least C E P --> vital_flag | (bitwise or);
+ * 			has 1 on edges
+ * 			has at least C E P --> vital_flag | (bitwise or);
+ * 				multiple C and E are accepted but only one P is accepted
  * 			has only autorised char
  * 		return (nbr nod);
  * ***************************************************************/

@@ -6,12 +6,13 @@
 #    By: lchan <lchan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 20:57:58 by lchan             #+#    #+#              #
-#    Updated: 2022/06/06 14:48:27 by lchan            ###   ########.fr        #
+#    Updated: 2022/06/06 16:14:41 by lchan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIBPATH = ./libraries/libft
 LIB	= ./libraries/libft/libft.a
+MLXPATH = ./mlx_linux
 
 SRCS	=	main.c\
 			sl_visual.c\
@@ -32,7 +33,7 @@ SRCS_BONUS	=	main.c\
 				sl_initgame.c\
 				sl_img_init.c\
 				sl_display_imgs.c\
-				bonus_sl_game_loop.c\
+				sl_game_loop_bonus.c\
 				sl_endgame.c\
 
 NAME			= so_long
@@ -63,10 +64,12 @@ ${OBJS_BONUS}:	${HEADER}
 
 ${NAME}:	${OBJS}
 			${MAKE} -C ${LIBPATH} all
+			${MAKE} -C ${MLXPATH} all
 			${CC} ${CFLAGS} ${OBJS} ${SOLONGFLAGS} -o ${NAME} ${LIB} -L${LIBPATH}
 
 ${NAME_BONUS}:	${OBJS_BONUS}
 				${MAKE} -C ${LIBPATH} all
+				${MAKE} -C ${MLXPATH} all
 				${CC} ${CFLAGS} ${OBJS_BONUS} ${SOLONGFLAGS} -o ${NAME_BONUS} ${LIB} -L${LIBPATH}
 
 debug:		${OBJS}
@@ -80,13 +83,17 @@ g3:			${OBJS}
 cleanlib :
 			${MAKE} -C ${LIBPATH} clean
 
-clean:		cleanlib
+cleanmlx :
+			${MAKE} -C ${MLXPATH} clean
+
+clean:		cleanlib cleanmlx
 			${RM} ${OBJS} ${OBJS_BONUS}
 
 cleanb:		clean
 			${RM} ${OBJSBONUS}
 
 fclean:		clean
+			${MAKE} -C ${LIBPATH} fclean
 			${RM} ${NAME} ${NAME_BONUS}
 
 re:			fclean all

@@ -6,7 +6,7 @@
 /*   By: lchan <lchan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:34:21 by lchan             #+#    #+#             */
-/*   Updated: 2022/06/06 13:28:18 by lchan            ###   ########.fr       */
+/*   Updated: 2022/06/06 15:49:31 by lchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,15 @@
 # define WALL_PATH "./sprites/pokemon_wall.xpm"
 # define COIN_PATH "./sprites/pokemon_coin.xpm"
 # define EXIT_PATH "./sprites/pokemon_exit.xpm"
-
 typedef struct s_img
 {
 	void	*ptr;
 	char	*path;
-	int		bpp;	//-->unused val
+	int		bpp;
 	int		width;
 	int		height;
-	int		endian;	//-->unused val
+	int		endian;
 }	t_img;
-
 typedef struct s_player
 {
 	int	mvt;
@@ -59,7 +57,6 @@ typedef struct s_player
 	int	x;
 	int	y;
 }	t_player;
-
 typedef struct s_data{
 	char		**map;
 	int			win_x;
@@ -85,10 +82,10 @@ enum map_char{
 };
 
 enum e_key{
-	KEY_W		= 119,
-	KEY_S		= 115,
-	KEY_D		= 100,
-	KEY_A		= 97,
+	KEY_W	= 119,
+	KEY_S	= 115,
+	KEY_D	= 100,
+	KEY_A	= 97,
 	ARW_U	= 65362,
 	ARW_D 	= 65364,
 	ARW_R	= 65363,
